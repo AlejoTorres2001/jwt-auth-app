@@ -6,10 +6,12 @@ const errorHandler = require("./middleware/errorHandler");
 const corsOptions = require("./config/corsOptions");
 const verifiyJWT = require("./middleware/verifyJWT");
 const cookieParser = require("cookie-parser");
+const crendetials = require("./middleware/credentials");
 const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.use(logger);
+app.use(crendetials)
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

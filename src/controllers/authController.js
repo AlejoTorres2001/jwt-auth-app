@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const fsPromises = require("fs").promises;
-const path = require ("path");
+const path = require("path");
 const bcrypt = require("bcrypt");
 const usersDB = {
   users: require("../models/users"),
@@ -20,24 +20,39 @@ const handleLogin = async (req, res) => {
   try {
     const match = await bcrypt.compare(password, foundUser.password);
     if (match) {
-      const accessToken = jwt.sign({
-        username: foundUser.username
-      },process.env.ACCESS_TOKEN_SECRET,{
-        expiresIn: "30s"
-      });
-      const refreshToken = jwt.sign({
-        username: foundUser.username
-      },process.env.REFRESH_TOKEN_SECRET,{
-        expiresIn: "1h"
-      });
-      const otherUsers = usersDB.users.filter((u) => u.username !== foundUser.username);
-      const currentUser = {...foundUser, refreshToken}
+      const accessToken = jwt.sign(
+        {
+          username: foundUser.username,
+        },
+        process.env.ACCESS_TOKEN_SECRET,
+        {
+          expiresIn: "30s",
+        }
+      );
+      const refreshToken = jwt.sign(
+        {
+          username: foundUser.username,
+        },
+        process.env.REFRESH_TOKEN_SECRET,
+        {
+          expiresIn: "1h",
+        }
+      );
+      const otherUsers = usersDB.users.filter(
+        (u) => u.username !== foundUser.username
+      );
+      const currentUser = { ...foundUser, refreshToken };
       usersDB.setUsers([...otherUsers, currentUser]);
       await fsPromises.writeFile(
-        path.join(__dirname ,'..','models','users.json'),
+        path.join(__dirname, "..", "models", "users.json"),
         JSON.stringify(usersDB.users)
-      )
-      res.cookie('jwt',refreshToken,{httpOnly:true,maxAge:60*60*1000});
+      );
+      res.cookie("jwt", refreshToken, {
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+        maxAge: 60 * 60 * 1000,
+      });
       return res.status(200).json({ accessToken });
     }
   } catch (error) {
