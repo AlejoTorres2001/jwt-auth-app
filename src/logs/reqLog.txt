@@ -1,0 +1,103 @@
+20220604	18:59:14	f892e8da-3fbf-43d3-8dc0-fc1585604d98	/new-page	GET
+20220604	18:59:14	53638e5b-689f-4c17-9e08-78be6de15062	/css/style.css	GET
+20220604	18:59:14	5c15d304-846d-45c3-8117-0222aae4b54a	/img/img1.jpg	GET
+20220604	18:59:14	fccc02ef-2e1c-4e3a-9358-cbb5a9487d3e	/favicon.ico	GET
+20220604	19:00:58	10f7c061-42b9-435c-acbb-0c749c92d63f	/new-page	GET
+20220604	19:01:17	de35e773-6059-4984-846b-b0d876f89a66	/new-page	GET
+20220604	19:01:17	62f2cf3c-d431-484f-9b4d-fa9bd8506529	/css/style.css	GET
+20220604	19:01:17	124bf806-ee09-4b59-a4fc-062bd62bbf86	/img/img1.jpg	GET
+20220604	19:03:27	453a3ddd-eb70-4860-9d56-161123257035	/new-page	GET
+20220604	19:03:27	43118df5-9026-4e2c-8c16-93e0e12b002a	/css/style.css	GET
+20220604	19:03:27	af88f4a2-bb7e-4504-be99-e824b0369084	/img/img1.jpg	GET
+20220604	19:15:56	5ec4244d-2d1b-4a46-9624-9f2a85e7c1f7	/	GET
+20220604	19:15:56	d8992fae-32b7-4b33-8f20-e4aaf4ee3348	/css/style.css	GET
+20220604	19:16:00	96a01456-e1f1-409b-8401-64da9d9c62b2	/	GET
+20220604	19:16:01	a3b561ed-9660-469f-9e64-0c88d31068e3	/css/style.css	GET
+20220604	19:16:23	622c498e-0cce-40f5-a02b-a2e6374b61cf	/asdasd/	GET
+20220604	19:16:23	e7be65c4-2ac0-4196-80ba-fbcee68b2b77	/css/style.css	GET
+20220604	19:17:03	dd96fe8d-b498-4e05-8dbe-72f0a22c8745	/new-page	GET
+20220604	19:17:03	3ef4c0bb-d575-403e-b866-bb28d7fc70da	/css/style.css	GET
+20220604	19:17:03	504f8fb5-a7c0-4f64-9604-cd65233a0afb	/img/img1.jpg	GET
+20220604	20:15:55	eb1840ec-0d1f-47cd-a4b7-5666f4a0f0f1	GET	undefined	/
+20220604	20:15:55	1c1537dd-a2bd-4242-8f37-7c33eb320b58	GET	undefined	/css/style.css
+20220604	20:17:49	24faf8d2-a3c9-41a6-b390-1c0fd221715a	GET	undefined	/
+20220604	20:17:50	61765d85-06e6-48f7-ad12-173715b917ba	GET	undefined	/css/style.css
+20220604	20:18:59	f143bfb5-dd9e-4a2b-bc01-89c732cf823e	GET	https://www.google.com	/
+20220604	20:20:52	f8781ed2-4695-4afe-8266-6e6442ff384e	GET	https://www.google.com	/
+20220604	20:26:17	024bc8b6-7275-42f7-9ec9-0aff6a5d9f23	GET	https://www.google.com	/
+20220604	20:26:42	7d4bf347-d6f8-4775-a34b-8b655c2eb860	GET	https://www.google.com	/
+20220604	20:26:58	552a1ed2-f4e0-4e8a-b12f-a309b0f403e0	GET	https://www.google.com	/
+20220604	20:30:33	2ab3459f-0bcd-4549-902e-63f41e607590	GET	undefined	/
+20220604	20:31:25	f544f259-09e9-4716-a444-a4a57735668d	GET	undefined	/
+20220604	20:31:25	7118b9f9-debb-4638-a3f0-d349fb26995b	GET	undefined	/css/style.css
+20220604	20:35:20	4def4fab-11d5-495a-ae8f-06102c590d72	GET	undefined	/
+20220604	20:35:34	485db65e-7e5a-4218-8b8e-6ec037fe5823	GET	undefined	/
+20220604	20:35:42	1ef92250-4f2d-4389-b677-2b0ab7529955	GET	undefined	/
+20220604	20:35:42	0e96cc8c-717a-41ab-b2a7-ab69bc90c420	GET	undefined	/css/style.css
+20220604	20:37:22	82b4a191-f639-4e8b-834e-60127941225c	GET	undefined	/
+20220604	20:37:23	c5f1d92c-e1d8-404c-a457-830b322aae50	GET	undefined	/css/style.css
+20220604	20:37:26	39bac2f4-81e0-4c49-8f6e-bc7a2304451d	GET	undefined	/asd
+20220604	20:37:26	3c931f96-f32c-4e15-a8e0-67ac8b66cf2e	GET	undefined	/css/style.css
+20220604	20:37:31	f98d4e75-a7ad-4f00-bfac-363ec7b16157	GET	undefined	/
+20220604	20:37:31	35831e1a-2bcc-4e5c-9b48-28e43ddfab08	GET	undefined	/css/style.css
+20220604	20:40:04	4d64a188-831c-4a0d-961b-8ca5fecf9aba	GET	undefined	/dave
+20220604	20:40:04	866dac9b-6803-4bbd-a636-71f7e476de31	GET	undefined	/css/style.css
+20220604	20:40:34	beb2839b-de21-4536-8935-1cc7a356b2ac	GET	undefined	/asd
+20220604	20:40:46	a4d70321-5c70-410a-99cb-4c58402ac9b6	GET	undefined	/asd
+20220605	02:07:50	0f2b2082-56b5-4c98-b531-30ada46a7210	GET	undefined	/
+20220605	02:07:50	2d2f6fb6-ca59-4c4d-88c5-2c2865f5b8ce	GET	undefined	/css/style.css
+20220605	02:07:50	d897c5af-9367-43be-ac44-1899400faa63	GET	undefined	/favicon.ico
+20220605	02:07:56	8e86cea5-0a19-46fd-93e2-4a8efea4a525	GET	undefined	/subdir
+20220605	02:08:14	3226527d-55a2-4fc7-8881-8a52fb7d10c9	GET	undefined	/subdir
+20220605	02:08:18	fe54f890-90da-4e8e-97d4-18e93ec65ac3	GET	undefined	/subdir/test
+20220605	02:08:24	c801f05a-3289-469b-bab1-f6ad0b115757	GET	undefined	/subdir/tasdasd
+20220605	02:08:24	02e3be97-8ed2-451f-8f6e-018a148472d7	GET	undefined	/css/style.css
+20220605	02:09:38	4bad40f7-116f-43ba-bf53-eb6f40443b44	GET	undefined	/subdir/tasdasd
+20220605	02:09:38	e25955ad-9291-42e9-8628-8031a12f8c7e	GET	undefined	/css/style.css
+20220605	02:14:28	f921a9a5-3554-4213-87f9-eb9eb770f426	GET	undefined	/
+20220605	02:14:28	77d0e336-808e-4d1e-abb5-3b8243d12ae7	GET	undefined	/css/style.css
+20220605	02:14:39	40074339-c179-404f-b294-ccd6fdc50b2b	GET	undefined	/new=page.html
+20220605	02:14:39	413a1042-5bcc-467b-bf93-38b04d391443	GET	undefined	/css/style.css
+20220605	02:14:45	e9f9b176-0af5-49ab-9d8d-211dc101279b	GET	undefined	/new-page.html
+20220605	02:14:45	1474b9df-f21c-4a97-bac0-00fdcbf2851e	GET	undefined	/css/style.css
+20220605	02:14:50	847125a5-d75a-4711-b54e-6f6e54c700d9	GET	undefined	/new-page
+20220605	02:14:50	fe79f5e5-6a7b-4abb-88b8-3b6c555b4978	GET	undefined	/css/style.css
+20220605	02:15:22	53b66b27-8425-4b6f-90fa-6c634889bd1a	GET	undefined	/
+20220605	02:15:22	468cf55a-5d46-4f2c-9879-e7426dbd0dc0	GET	undefined	/css/style.css
+20220605	02:16:19	5ff1ab92-bfe0-4a72-b090-212a9b40e19c	GET	undefined	/new-page
+20220605	02:16:19	0168cf0e-b866-4813-9f79-eb252ef96561	GET	undefined	/css/style.css
+20220605	02:16:42	36c98a8a-1271-4e00-ad4d-5bfce64467b8	GET	undefined	/new-page
+20220605	02:16:42	9533369d-b111-48f7-81de-f5a508549e87	GET	undefined	/css/style.css
+20220605	02:17:25	440934cc-ffe8-4c6f-96ad-2f59ff723d75	GET	undefined	/new-page
+20220605	02:17:25	cc489fb0-35fd-4e10-a444-5742140741a8	GET	undefined	/css/style.css
+20220605	02:17:25	57d7742e-891e-42c3-8744-63540d95477f	GET	undefined	/img/img1.jpg
+20220605	02:29:24	4acb6b51-9293-4768-b819-debe8454557c	POST	undefined	/employee
+20220605	02:29:34	0f5b0895-fb98-4459-88a7-8ec1c96efec1	POST	undefined	/employees
+20220605	22:01:09	759ae25f-9b44-4afb-bd61-46c5e062d859	GET	undefined	/employees
+20220605	22:01:36	3ba3ac2c-5e17-40c4-b7c7-b8eeaf509a40	POST	undefined	/employees
+20220605	22:02:44	dfcc72e3-45d7-4c62-a05f-3a326a2f8206	POST	undefined	/employees
+20220605	22:03:32	7d877259-bdf7-4797-a925-a170dac46094	POST	undefined	/employees
+20220605	22:06:02	0fc179d1-5c73-4af1-becf-4c7cfe6ea1e5	POST	undefined	/employees
+20220605	22:06:28	3fe66c9b-df5b-403f-920e-405d4ef29c68	DELETE	undefined	/employees
+20220605	22:07:29	969614ab-ea8d-4e53-bb12-a93b142ac145	DELETE	undefined	/employees
+20220605	22:07:29	529ef932-5bc2-4f71-b9d8-fec3f9b7ae78	DELETE	undefined	/employees
+20220605	22:08:19	a2a899bc-809c-46c1-a81d-1a553b3f9831	POST	undefined	/employees
+20220605	22:08:32	c6e76ade-559d-4775-9648-6324bc12619f	GET	undefined	/employees
+20220605	22:08:51	97625528-7f44-46f8-9e3b-63384d81461c	DELETE	undefined	/employees
+20220605	22:09:05	a14210f8-e7de-4c61-b3a5-eeefca4a257a	GET	undefined	/employees/3
+20220605	22:11:52	f8b2c6cd-3b1b-4397-959b-6ea6343ab2f7	DELETE	undefined	/employees
+20220605	22:12:00	697fb4f7-cf11-48cd-8f31-363c93b1365a	DELETE	undefined	/employees
+20220605	22:12:01	90e5aa63-3afc-4d0f-a5be-df74402f695b	DELETE	undefined	/employees
+20220605	22:14:08	b60d2741-1f93-450d-b563-2bc4322de55e	PUT	undefined	/employees
+20220605	22:14:39	90e3e680-0dac-44a7-a0d6-2f6952f0f5bf	PUT	undefined	/employees
+20220605	23:38:54	340dffb7-19a5-4047-a706-0da324595846	POST	undefined	/register
+20220605	23:39:15	cea2f7aa-d91c-4c58-bf62-121c086310a3	POST	undefined	/register
+20220605	23:39:42	2c7397d0-17ef-4350-afee-b29088304c9a	POST	undefined	/register
+20220605	23:39:47	a990b540-95bb-4be6-9d4c-1a60087423c5	POST	undefined	/register
+20220605	23:40:22	ae569770-9c65-4400-b908-78ffddb2312b	POST	undefined	/register
+20220605	23:41:10	32da4dad-b576-4fb9-8e4c-49d778272f93	POST	undefined	/register
+20220605	23:41:20	28c8cb70-0592-47be-aa94-fec1dd7fdce6	POST	undefined	/register
+20220605	23:42:00	6af1d461-2d5a-4453-af28-64b16733f83c	POST	undefined	/register
+20220605	23:51:40	25e7c7b7-fe09-473f-99dd-835c9aef6c00	POST	undefined	/auth
+20220605	23:51:43	fd3c5720-3e82-40e7-a99f-9b9b0b939b87	POST	undefined	/auth
+20220605	23:51:49	711b3aa1-4301-447f-be93-73b1ecb26221	POST	undefined	/auth

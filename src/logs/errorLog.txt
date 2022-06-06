@@ -1,0 +1,4 @@
+20220604	19:00:58	27043ee2-6e95-433c-ad45-3f7d6e04ab0a	TypeError: fs.promises.readFil is not a function
+20220604	20:35:20	8e1ff56e-4489-429d-a28d-fad243c522a5	Not allowed by CORS:Not allowed by CORS
+20220604	20:35:34	9245bac7-146a-4188-9750-a60660516b65	Not allowed by CORS:Not allowed by CORS
+20220605	22:14:08	38610040-224f-43e1-8433-eec97a3b3950	Cannot read properties of undefined (reading 'firstname'):Cannot read properties of undefined (reading 'firstname')
