@@ -8,7 +8,6 @@ const {
   createNewEmployee,
   getAllEmployees,
 } = require("../../controllers/employeesController");
-
 router
   .route("/")
   .get(getAllEmployees)

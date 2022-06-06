@@ -1,10 +1,14 @@
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
+const fsPromises = require("fs").promises;
+const path = require ("path");
+const bcrypt = require("bcrypt");
 const usersDB = {
   users: require("../models/users"),
   setUsers: function (data) {
     this.users = data;
   },
 };
-const bcrypt = require("bcrypt");
 const handleLogin = async (req, res) => {
   const { user, password } = req.body;
   if (!user || !password)
@@ -16,11 +20,28 @@ const handleLogin = async (req, res) => {
   try {
     const match = await bcrypt.compare(password, foundUser.password);
     if (match) {
-      //send JWT
-      return res.status(200).json({ message: "login successful" });
+      const accessToken = jwt.sign({
+        username: foundUser.username
+      },process.env.ACCESS_TOKEN_SECRET,{
+        expiresIn: "30s"
+      });
+      const refreshToken = jwt.sign({
+        username: foundUser.username
+      },process.env.REFRESH_TOKEN_SECRET,{
+        expiresIn: "1h"
+      });
+      const otherUsers = usersDB.users.filter((u) => u.username !== foundUser.username);
+      const currentUser = {...foundUser, refreshToken}
+      usersDB.setUsers([...otherUsers, currentUser]);
+      await fsPromises.writeFile(
+        path.join(__dirname ,'..','models','users.json'),
+        JSON.stringify(usersDB.users)
+      )
+      res.cookie('jwt',refreshToken,{httpOnly:true,maxAge:60*60*1000});
+      return res.status(200).json({ accessToken });
     }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
   return res.status(401).json({ message: "login failed" });
 };

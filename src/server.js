@@ -4,22 +4,26 @@ const { logger } = require("./middleware/logEvents");
 const cors = require("cors");
 const errorHandler = require("./middleware/errorHandler");
 const corsOptions = require("./config/corsOptions");
-
+const verifiyJWT = require("./middleware/verifyJWT");
+const cookieParser = require("cookie-parser");
 const PORT = process.env.PORT || 3000;
 const app = express();
-
 
 app.use(logger);
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use('/',require('./routes/root'));
-app.use('/register',require('./routes/api/register'));
-app.use('/auth',require('./routes/api/auth'));
-app.use('/employees',require('./routes/api/employees'));
+app.use("/", require("./routes/root"));
+app.use("/register", require("./routes/api/register"));
+app.use("/auth", require("./routes/api/auth"));
+app.use("/refresh",require("./routes/api/refresh"));
+app.use("/logout", require("./routes/api/logOut"));
 
+app.use(verifiyJWT);
+app.use("/employees", require("./routes/api/employees"));
 
 app.all("*", (req, res) => {
   res.status(404);
