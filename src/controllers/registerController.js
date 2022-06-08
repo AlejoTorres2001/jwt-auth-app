@@ -1,4 +1,5 @@
 const User = require("../models/User");
+
 const ROLES_LIST = require("../config/roles_list");
 const bcrypt = require("bcrypt");
 const handleNewUser = async (req, res) => {
@@ -17,7 +18,6 @@ const handleNewUser = async (req, res) => {
       username: user,
       password: hashedPassword,
     });
-    console.log(result)
     res.status(201).json({ message: `user ${user} created` });
   } catch (error) {
     res.status(500).json({ message: error.message });

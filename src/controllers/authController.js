@@ -1,20 +1,13 @@
 const jwt = require("jsonwebtoken");
-const fsPromises = require("fs").promises;
-const path = require("path");
 const bcrypt = require("bcrypt");
-const usersDB = {
-  users: require("../models/users"),
-  setUsers: function (data) {
-    this.users = data;
-  },
-};
+const User = require("../models/User");
 const handleLogin = async (req, res) => {
   const { user, password } = req.body;
   if (!user || !password)
     return res
       .status(400)
       .json({ message: "you must provide an user and password" });
-  const foundUser = usersDB.users.find((u) => u.username === user);
+  const foundUser = await User.findOne({ username: user }).exec();
   if (!foundUser) return res.status(401);
   try {
     const match = await bcrypt.compare(password, foundUser.password);
@@ -41,19 +34,12 @@ const handleLogin = async (req, res) => {
           expiresIn: "1h",
         }
       );
-      const otherUsers = usersDB.users.filter(
-        (u) => u.username !== foundUser.username
-      );
-      const currentUser = { ...foundUser, refreshToken };
-      usersDB.setUsers([...otherUsers, currentUser]);
-      await fsPromises.writeFile(
-        path.join(__dirname, "..", "models", "users.json"),
-        JSON.stringify(usersDB.users)
-      );
+      
+      const updatedUser=await User.findByIdAndUpdate(foundUser._id, {refreshToken}).exec();
       res.cookie("jwt", refreshToken, {
         httpOnly: true,
         sameSite: "none",
-        secure: true,
+        secure: true, //! comment if testing via thunderclient
         maxAge: 60 * 60 * 1000,
       });
       return res.status(200).json({ accessToken });
