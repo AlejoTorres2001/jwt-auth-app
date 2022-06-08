@@ -10,10 +10,10 @@ const handleLogin = async (req, res) => {
       .status(400)
       .json({ message: "you must provide an user and password" });
   const foundUser = await User.findOne({ username: user }).exec();
-  if (!foundUser) return res.status(401);
+  if (!foundUser) return res.sendStatus(401);
   try {
     const match = await bcrypt.compare(password, foundUser.password);
-    const roles = Object.values(foundUser.roles);
+    const roles = Object.values(foundUser.roles).filter(Boolean);
     if (match) {
       const accessToken = jwt.sign(
         {
@@ -60,10 +60,10 @@ const handleLogin = async (req, res) => {
       res.cookie("jwt", newRefreshToken, {
         httpOnly: true,
         sameSite: "none",
-        //secure: true, //! comment if testing via thunderclient
+        secure: true, //! comment if testing via thunderclient
         maxAge: 60 * 60 * 1000,
       });
-      return res.status(200).json({ accessToken });
+      return res.status(200).json({ accessToken, roles });
     }
   } catch (error) {
     return res.status(500).json({ message: error.message });
