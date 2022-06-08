@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const handleLogin = async (req, res) => {
   const cookies = req.cookies;
+  console.log(`cookie available at login ${JSON.stringify(cookies)}`);
   const { user, password } = req.body;
   if (!user || !password)
     return res
@@ -35,16 +36,25 @@ const handleLogin = async (req, res) => {
           expiresIn: "1h",
         }
       );
-      let newRefreshTokenArray = !cookies.jwt ? foundUser.refreshToken : foundUser.refreshToken.filter(rt => rt !== cookies.jwt);
+      let newRefreshTokenArray = !cookies.jwt
+        ? foundUser.refreshToken
+        : foundUser.refreshToken.filter((rt) => rt !== cookies.jwt);
 
-      if(cookies?.jwt){
+      if (cookies?.jwt) {
+        const refreshToken = cookies.jwt;
+        const foundToken = await User.findOne({ refreshToken }).exec();
+
+        //detected refreshToken reuse
+        if (!foundToken) {
+          newRefreshTokenArray = [];
+        }
         res.clearCookie("jwt", {
           httpOnly: true,
           sameSite: "none",
           secure: true,
         });
       }
-      foundUser.refreshToken = [...newRefreshTokenArray,newRefreshToken]
+      foundUser.refreshToken = [...newRefreshTokenArray, newRefreshToken];
       const result = await foundUser.save();
       console.log(result);
       res.cookie("jwt", newRefreshToken, {
