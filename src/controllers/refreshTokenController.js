@@ -74,13 +74,12 @@ const handleRefreshToken = async (req, res) => {
       res.cookie("jwt", newRefreshToken, {
         httpOnly: true,
         sameSite: "none",
-        secure: true, //! comment if testing via thunderclient
+        //secure: true, //! comment if testing via thunderclient
         maxAge: 60 * 60 * 1000,
       });
       res.json({ roles, accessToken });
     }
   );
-  return res.status(500).json({ message: error.message });
 };
 
 module.exports = handleRefreshToken;
