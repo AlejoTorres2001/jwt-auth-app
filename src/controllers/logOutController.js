@@ -13,8 +13,10 @@ const handleLogOut = async (req, res) => {
     });
     return res.sendStatus(204);
   }
-
-  const currentUser = await User.findByIdAndUpdate(foundUser._id, { refreshToken: '' }).exec();
+  foundUser.refreshToken = foundUser.refreshToken.filter(
+    (rt) => rt !== refreshToken
+  );
+  const result = await foundUser.save();
   res.clearCookie("jwt", {
     httpOnly: true,
     sameSite: "none",
