@@ -19,10 +19,14 @@ const handleLogin = async (req, res) => {
   if (!foundUser) return res.status(401);
   try {
     const match = await bcrypt.compare(password, foundUser.password);
+    const roles = Object.values(foundUser.roles);
     if (match) {
       const accessToken = jwt.sign(
         {
-          username: foundUser.username,
+          UserInfo: {
+            username: foundUser.username,
+            roles: roles,
+          },
         },
         process.env.ACCESS_TOKEN_SECRET,
         {

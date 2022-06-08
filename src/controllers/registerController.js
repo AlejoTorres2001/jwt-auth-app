@@ -4,10 +4,10 @@ const usersDB = {
     this.users = data;
   },
 };
+const ROLES_LIST = require("../config/roles_list");
 const fsPromises = require("fs").promises;
 const path = require("path");
 const bcrypt = require("bcrypt");
-
 const handleNewUser = async (req, res) => {
   const { user, password } = req.body;
   if (!user || !password) {
@@ -20,7 +20,9 @@ const handleNewUser = async (req, res) => {
     return res.status(409).json({ message: "user already exists" });
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = { username: user, password: hashedPassword };
+    const newUser = { username: user, password: hashedPassword,roles:{
+      "User":ROLES_LIST.User
+    } };
     usersDB.setUsers([...usersDB.users, newUser]);
     await fsPromises.writeFile(
       path.join(__dirname, "..", "models", "users.json"),
