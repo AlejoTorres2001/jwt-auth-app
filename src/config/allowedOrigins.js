@@ -1,2 +1,2 @@
-const whiteList = ["https://www.google.com", "http://localhost:3001"];
+const whiteList = ["http://localhost:3000", "https://localhost:3001"];
 module.exports = whiteList;
