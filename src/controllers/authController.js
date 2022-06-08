@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const handleLogin = async (req, res) => {
+  const cookies = req.cookies;
   const { user, password } = req.body;
   if (!user || !password)
     return res
@@ -25,7 +26,7 @@ const handleLogin = async (req, res) => {
           expiresIn: "30s",
         }
       );
-      const refreshToken = jwt.sign(
+      const newRefreshToken = jwt.sign(
         {
           username: foundUser.username,
         },
@@ -34,12 +35,22 @@ const handleLogin = async (req, res) => {
           expiresIn: "1h",
         }
       );
-      
-      const updatedUser=await User.findByIdAndUpdate(foundUser._id, {refreshToken}).exec();
-      res.cookie("jwt", refreshToken, {
+      let newRefreshTokenArray = !cookies.jwt ? foundUser.refreshToken : foundUser.refreshToken.filter(rt => rt !== cookies.jwt);
+
+      if(cookies?.jwt){
+        res.clearCookie("jwt", {
+          httpOnly: true,
+          sameSite: "none",
+          secure: true,
+        });
+      }
+      foundUser.refreshToken = [...newRefreshTokenArray,newRefreshToken]
+      const result = await foundUser.save();
+      console.log(result);
+      res.cookie("jwt", newRefreshToken, {
         httpOnly: true,
         sameSite: "none",
-        secure: true, //! comment if testing via thunderclient
+        //secure: true, //! comment if testing via thunderclient
         maxAge: 60 * 60 * 1000,
       });
       return res.status(200).json({ accessToken });
