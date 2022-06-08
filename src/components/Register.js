@@ -62,6 +62,9 @@ const Register = () => {
     if (response?.errorCode === 409) {
       setErrMsg("Username Taken");
     }
+    if(response?.errorCode ===401){
+        setErrMsg("Invalid Credentials");
+    }
     if (response?.status === 201) {
       errRef.current.focus();
       setSuccess(true);
