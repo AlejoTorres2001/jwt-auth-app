@@ -1,33 +1,40 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import useAuth from '../hooks/useAuth';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import logout from "../services/logout";
 
 const Home = () => {
   const { setAuth } = useAuth();
-  const navigate = useNavigate()
-  const logout = async () => {
-    // axios to /logout endpoint 
-    setAuth({});
-    navigate('/login', { replace: true });
-}
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    const response = await logout();
+    if (response.status === 204 || response.status === 200) {
+      setAuth({});
+      navigate("/login", { replace: true });
+    }
+    if (response?.errorCode) {
+      console.error("logout failed");
+    }
+  };
   return (
     <section>
-    <h1>Home</h1>
-    <br />
-    <p>You are logged in!</p>
-    <br />
-    <Link to="/editor">Go to the Editor page</Link>
-    <br />
-    <Link to="/admin">Go to the Admin page</Link>
-    <br />
-    <Link to="/lounge">Go to the Lounge</Link>
-    <br />
-    <Link to="/linkpage">Go to the link page</Link>
-    <div className="flexGrow">
-        <button onClick={()=>logout()}>Sign Out</button>
-    </div>
-</section>
-  )
-}
+      <h1>Home</h1>
+      <br />
+      <p>You are logged in!</p>
+      <br />
+      <Link to="/editor">Go to the Editor page</Link>
+      <br />
+      <Link to="/admin">Go to the Admin page</Link>
+      <br />
+      <Link to="/lounge">Go to the Lounge</Link>
+      <br />
+      <Link to="/linkpage">Go to the link page</Link>
+      <div className="flexGrow">
+        <button onClick={() => handleLogout()}>Sign Out</button>
+      </div>
+    </section>
+  );
+};
 
-export default Home
+export default Home;
