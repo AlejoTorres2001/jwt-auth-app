@@ -24,7 +24,7 @@ const handleLogin = async (req, res) => {
         },
         process.env.ACCESS_TOKEN_SECRET,
         {
-          expiresIn: "30s",
+          expiresIn: "10s",
         }
       );
       const newRefreshToken = jwt.sign(
@@ -33,7 +33,7 @@ const handleLogin = async (req, res) => {
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
-          expiresIn: "1h",
+          expiresIn: "15s",
         }
       );
       let newRefreshTokenArray = !cookies.jwt
