@@ -6,6 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import register from "../services/register";
+import { Link } from "react-router-dom";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -55,16 +56,9 @@ const Register = () => {
       return;
     }
     const response = await register({ user, pwd });
-    console.log(response);
-    if (response?.errorCode === 500) {
-      setErrMsg("No Server Response");
-    }
-    if (response?.errorCode === 409) {
-      setErrMsg("Username Taken");
-    }
-    if(response?.errorCode ===401){
-        setErrMsg("Invalid Credentials");
-    }
+    if (response?.errorCode === 500) return setErrMsg("No Server Response");
+    if (response?.errorCode === 409) return setErrMsg("Username Taken");
+    if (response?.errorCode === 401) return setErrMsg("Invalid Credentials");
     if (response?.status === 201) {
       errRef.current.focus();
       setSuccess(true);
@@ -80,7 +74,7 @@ const Register = () => {
         <section>
           <h1>Success!</h1>
           <p>
-            <a href="#">Sign In</a>
+            <Link to={'/login'}>Sign In</Link>
           </p>
         </section>
       ) : (
@@ -215,7 +209,7 @@ const Register = () => {
             <br />
             <span className="line">
               {/*put router link here*/}
-              <a href="#">Sign In</a>
+              <Link to={'/login'}>Sign In</Link>
             </span>
           </p>
         </section>

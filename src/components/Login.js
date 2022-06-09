@@ -1,4 +1,5 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState   } from "react";
+import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import login from "../services/login";
 const Login = () => {
@@ -41,7 +42,7 @@ const Login = () => {
           <h1>You are logged in!</h1>
           <br />
           <p>
-            <a href="#">Go to Home</a>
+            <Link to={'/'}>Go to Home</Link>
           </p>
         </section>
       ) : (
@@ -82,7 +83,7 @@ const Login = () => {
             <br />
             <span className="line">
               {/*put router link here*/}
-              <a href="#">Sign Up</a>
+              <Link to={'/register'}>Sign Up</Link>
             </span>
           </p>
         </section>
