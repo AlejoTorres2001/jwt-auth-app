@@ -1,8 +1,8 @@
-import { useRef, useEffect, useState, useContext } from "react";
-import AuthContext from "../context/AuthProvider";
+import { useRef, useEffect, useState } from "react";
+import useAuth from "../hooks/useAuth";
 import login from "../services/login";
 const Login = () => {
-  const { auth, setAuth } = useContext(AuthContext);
+  const { setAuth } = useAuth();
   const userRef = useRef();
   const errRef = useRef();
 
