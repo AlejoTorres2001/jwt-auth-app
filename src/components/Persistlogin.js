@@ -4,7 +4,7 @@ import useAuth from "../hooks/useAuth";
 import useRefreshToken from "../hooks/useRefreshToken";
 const Persistlogin = () => {
   const [IsLoading, setIsLoading] = useState(true);
-  const { auth } = useAuth();
+  const { auth, persist } = useAuth();
   const refresh = useRefreshToken();
   useEffect(() => {
     const verifyRefreshToken = async () => {
@@ -16,7 +16,7 @@ const Persistlogin = () => {
         setIsLoading(false);
       }
     };
-    !auth.accessToken ? verifyRefreshToken() : setIsLoading(false);
+    !persist ? setIsLoading(false) : !auth.accessToken ? verifyRefreshToken() : setIsLoading(false);
   }, []);
 
   useEffect(() => {
@@ -24,7 +24,11 @@ const Persistlogin = () => {
     console.log(`At ${JSON.stringify(auth?.accessToken)}`);
   }, [IsLoading]);
 
-  return <>{IsLoading ? <div>Loading...</div> : <Outlet />}</>;
+  return (
+    <>
+      {!persist ? <Outlet /> : IsLoading ? <div>Loading...</div> : <Outlet />}
+    </>
+  );
 };
 
 export default Persistlogin;
