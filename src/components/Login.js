@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import login from "../services/login";
 const Login = () => {
-  const { setAuth } = useAuth();
+  const { setAuth, persist, setPersist } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -38,6 +38,9 @@ const Login = () => {
       navigate(from, { replace: true });
     }
   };
+  useEffect(() => {
+    localStorage.setItem("persist", persist);
+  }, [persist]);
   return (
     <section>
       <p
@@ -69,6 +72,15 @@ const Login = () => {
           required
         />
         <button>SigIn</button>
+        <div className="persistCheck">
+          <input
+            type="checkbox"
+            id="persist"
+            onChange={(e) => setPersist((prev) => !prev)}
+            checked={persist}
+          />
+          <label htmlFor="persist">Trust this Device?</label>
+        </div>
       </form>
       <p>
         Need an Account?
