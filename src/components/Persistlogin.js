@@ -4,7 +4,7 @@ import useAuth from "../hooks/useAuth";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useRefreshToken from "../hooks/useRefreshToken";
 const Persistlogin = () => {
-const [persist]= useLocalStorage('persist', false);
+  const [persist] = useLocalStorage("persist", false);
   const [IsLoading, setIsLoading] = useState(true);
   const { auth } = useAuth();
   const refresh = useRefreshToken();
@@ -18,13 +18,12 @@ const [persist]= useLocalStorage('persist', false);
         setIsLoading(false);
       }
     };
-    !persist ? setIsLoading(false) : !auth.accessToken ? verifyRefreshToken() : setIsLoading(false);
+    !persist
+      ? setIsLoading(false)
+      : !auth.accessToken
+      ? verifyRefreshToken()
+      : setIsLoading(false);
   }, []);
-
-  useEffect(() => {
-    console.log(`is loading ${IsLoading}`);
-    console.log(`At ${JSON.stringify(auth?.accessToken)}`);
-  }, [IsLoading]);
 
   return (
     <>
