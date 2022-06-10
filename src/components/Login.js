@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import useInput from "../hooks/useInput";
 import useLocalStorage from "../hooks/useLocalStorage";
 import login from "../services/login";
 const Login = () => {
@@ -12,7 +13,7 @@ const Login = () => {
   const errRef = useRef();
 
   const [pwd, setPwd] = useState("");
-  const [user, setUser] = useLocalStorage("user", "");
+  const [user, resetUser,userAttributes] = useInput('user',"");
   const [errMsg, setErrMsg] = useState("");
 
   useEffect(() => {
@@ -34,7 +35,7 @@ const Login = () => {
     const roles = response?.data?.roles;
     if (accessToken) {
       setAuth({ user, pwd, roles, accessToken });
-      setUser("");
+      resetUser("");
       setPwd("");
       navigate(from, { replace: true });
     }
@@ -59,8 +60,7 @@ const Login = () => {
           id="username"
           ref={userRef}
           autoComplete="off"
-          onChange={(e) => setUser(e.target.value)}
-          value={user}
+          {...userAttributes}
           required
         />
         <label htmlFor="password">Password</label>
