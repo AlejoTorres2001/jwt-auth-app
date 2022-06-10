@@ -1,22 +1,8 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
-import logout from "../services/logout";
-
+import { Link } from "react-router-dom";
+import useLogout from "../hooks/useLogout";
 const Home = () => {
-  const { setAuth } = useAuth();
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    const response = await logout();
-    if (response.status === 204 || response.status === 200) {
-      setAuth({});
-      navigate("/login", { replace: true });
-    }
-    if (response?.errorCode) {
-      console.error("logout failed");
-    }
-  };
+  const {logout} = useLogout()
   return (
     <section>
       <h1>Home</h1>
@@ -31,7 +17,7 @@ const Home = () => {
       <br />
       <Link to="/linkpage">Go to the link page</Link>
       <div className="flexGrow">
-        <button onClick={() => handleLogout()}>Sign Out</button>
+        <button onClick={async () => await logout()}>Sign Out</button>
       </div>
     </section>
   );
