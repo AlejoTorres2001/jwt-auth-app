@@ -35,15 +35,12 @@ const Login = () => {
     const accessToken = response?.data?.accessToken;
     const roles = response?.data?.roles;
     if (accessToken) {
-      setAuth({ user, pwd, roles, accessToken });
+      setAuth({ user, roles, accessToken });
       resetUser("");
       setPwd("");
       navigate(from, { replace: true });
     }
   };
-  // useEffect(() => {
-  //   localStorage.setItem("persist", persist);
-  // }, [persist]);
   return (
     <section>
       <p
