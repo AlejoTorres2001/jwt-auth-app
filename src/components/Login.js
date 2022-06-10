@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import useLocalStorage from "../hooks/useLocalStorage";
 import login from "../services/login";
 const Login = () => {
   const { setAuth, persist, setPersist } = useAuth();
@@ -11,7 +12,7 @@ const Login = () => {
   const errRef = useRef();
 
   const [pwd, setPwd] = useState("");
-  const [user, setUser] = useState("");
+  const [user, setUser] = useLocalStorage("user", "");
   const [errMsg, setErrMsg] = useState("");
 
   useEffect(() => {
