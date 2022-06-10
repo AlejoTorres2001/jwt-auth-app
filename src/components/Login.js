@@ -2,10 +2,11 @@ import { useRef, useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useInput from "../hooks/useInput";
-import useLocalStorage from "../hooks/useLocalStorage";
+import useToggle from "../hooks/useToggle";
 import login from "../services/login";
 const Login = () => {
-  const { setAuth, persist, setPersist } = useAuth();
+  const { setAuth } = useAuth();
+  const [check, toggleCheck] = useToggle("persist", false);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -13,7 +14,7 @@ const Login = () => {
   const errRef = useRef();
 
   const [pwd, setPwd] = useState("");
-  const [user, resetUser,userAttributes] = useInput('user',"");
+  const [user, resetUser, userAttributes] = useInput("user", "");
   const [errMsg, setErrMsg] = useState("");
 
   useEffect(() => {
@@ -40,9 +41,9 @@ const Login = () => {
       navigate(from, { replace: true });
     }
   };
-  useEffect(() => {
-    localStorage.setItem("persist", persist);
-  }, [persist]);
+  // useEffect(() => {
+  //   localStorage.setItem("persist", persist);
+  // }, [persist]);
   return (
     <section>
       <p
@@ -77,8 +78,8 @@ const Login = () => {
           <input
             type="checkbox"
             id="persist"
-            onChange={(e) => setPersist((prev) => !prev)}
-            checked={persist}
+            onChange={toggleCheck}
+            checked={check}
           />
           <label htmlFor="persist">Trust this Device?</label>
         </div>
