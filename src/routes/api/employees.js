@@ -1,20 +1,20 @@
-const express = require("express");
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 const {
   getEmployee,
   deleteEmployee,
   updateEmployee,
   createNewEmployee,
-  getAllEmployees,
-} = require("../../controllers/employeesController");
-const ROLES_LIST = require("../../config/roles_list"); 
-const verifyRoles = require("../../middleware/verifyRoles");
+  getAllEmployees
+} = require('../../controllers/employeesController')
+const ROLES_LIST = require('../../config/roles_list')
+const verifyRoles = require('../../middleware/verifyRoles')
 router
-  .route("/")
+  .route('/')
   .get(getAllEmployees)
-  .post(verifyRoles(ROLES_LIST.Admin,ROLES_LIST.Editor),createNewEmployee)
-  .put(verifyRoles(ROLES_LIST.Admin,ROLES_LIST.Editor),updateEmployee)
-  .delete(verifyRoles(ROLES_LIST.Admin),deleteEmployee);
-router.route("/:id").get(getEmployee);
+  .post(verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor), createNewEmployee)
+  .put(verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor), updateEmployee)
+  .delete(verifyRoles(ROLES_LIST.Admin), deleteEmployee)
+router.route('/:id').get(getEmployee)
 
-module.exports = router;
+module.exports = router
