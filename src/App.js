@@ -1,22 +1,22 @@
-import { Routes, Route } from "react-router-dom";
-import Admin from "./components/Admin";
-import Editor from "./components/Editor";
-import Home from "./components/Home";
-import Layout from "./components/Layout";
-import LinkPage from "./components/LinkPage";
-import Login from "./components/Login";
-import Lounge from "./components/Lounge";
-import Missing from "./components/Missing";
-import Persistlogin from "./components/Persistlogin";
-import Register from "./components/Register";
-import RequireAuth from "./components/RequireAuth";
-import Unauthorized from "./components/Unauthorized";
+import { Routes, Route } from 'react-router-dom'
+import Admin from './components/Admin'
+import Editor from './components/Editor'
+import Home from './components/Home'
+import Layout from './components/Layout'
+import LinkPage from './components/LinkPage'
+import Login from './components/Login'
+import Lounge from './components/Lounge'
+import Missing from './components/Missing'
+import Persistlogin from './components/Persistlogin'
+import Register from './components/Register'
+import RequireAuth from './components/RequireAuth'
+import Unauthorized from './components/Unauthorized'
 const ROLES = {
   User: 5153,
   Editor: 5152,
-  Admin: 5151,
-};
-function App() {
+  Admin: 5151
+}
+function App () {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -50,7 +50,7 @@ function App() {
         <Route path="*" element={<Missing />} />
       </Route>
     </Routes>
-  );
+  )
 }
 
-export default App;
+export default App

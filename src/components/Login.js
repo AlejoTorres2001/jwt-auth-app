@@ -1,51 +1,56 @@
-import { useRef, useEffect, useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
-import useInput from "../hooks/useInput";
-import useToggle from "../hooks/useToggle";
-import login from "../services/login";
+import { useRef, useEffect, useState } from 'react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import useAuth from '../hooks/useAuth'
+import useInput from '../hooks/useInput'
+import useToggle from '../hooks/useToggle'
+import login from '../services/login'
 const Login = () => {
-  const { setAuth } = useAuth();
-  const [check, toggleCheck] = useToggle("persist", false);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
-  const userRef = useRef();
-  const errRef = useRef();
+  const { setAuth } = useAuth()
+  const [check, toggleCheck] = useToggle('persist', false)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
+  const userRef = useRef()
+  const errRef = useRef()
 
-  const [pwd, setPwd] = useState("");
-  const [user, resetUser, userAttributes] = useInput("user", "");
-  const [errMsg, setErrMsg] = useState("");
+  const [pwd, setPwd] = useState('')
+  const [user, resetUser, userAttributes] = useInput('user', '')
+  const [errMsg, setErrMsg] = useState('')
 
   useEffect(() => {
-    userRef.current.focus();
-  }, []);
+    userRef.current.focus()
+  }, [])
   useEffect(() => {
-    setErrMsg("");
-  }, [user, pwd]);
+    setErrMsg('')
+  }, [user, pwd])
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await login({ user, pwd });
-    if (response.errorCode) errRef.current.focus();
-    if (response?.errorCode === 401) return setErrMsg("Invalid Credentials");
-    if (response?.errorCode === 400)
-      return setErrMsg("Missing Username or Password");
-    if (response?.errorCode === 500) return setErrMsg("No Server Response");
-    //response success
-    const accessToken = response?.data?.accessToken;
-    const roles = response?.data?.roles;
-    if (accessToken) {
-      setAuth({ user, roles, accessToken });
-      resetUser("");
-      setPwd("");
-      navigate(from, { replace: true });
+    e.preventDefault()
+    const response = await login({ user, pwd })
+    if (response.errorCode) errRef.current.focus()
+    if (response?.errorCode === 401) {
+      return setErrMsg('Invalid Credentials')
     }
-  };
+    if (response?.errorCode === 400) {
+      return setErrMsg('Missing Username or Password')
+    }
+    if (response?.errorCode === 500) {
+      return setErrMsg('No Server Response')
+    }
+    // response success
+    const accessToken = response?.data?.accessToken
+    const roles = response?.data?.roles
+    if (accessToken) {
+      setAuth({ user, roles, accessToken })
+      resetUser('')
+      setPwd('')
+      navigate(from, { replace: true })
+    }
+  }
   return (
     <section>
       <p
         ref={errRef}
-        className={errMsg ? "errmsg" : "offscreen"}
+        className={errMsg ? 'errmsg' : 'offscreen'}
         aria-live="assertive"
       >
         {errMsg}
@@ -85,12 +90,12 @@ const Login = () => {
         Need an Account?
         <br />
         <span className="line">
-          {/*put router link here*/}
-          <Link to={"/register"}>Sign Up</Link>
+          {/* put router link here */}
+          <Link to={'/register'}>Sign Up</Link>
         </span>
       </p>
     </section>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

@@ -1,6 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Users from "./Users";
+import { Link } from 'react-router-dom'
+import Users from './Users'
 
 const Admin = () => {
   return (
@@ -10,10 +9,10 @@ const Admin = () => {
       <Users></Users>
       <br />
       <div className="flexGrow">
-        <Link to={"/"}>HOME</Link>
+        <Link to={'/'}>HOME</Link>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Admin;
+export default Admin

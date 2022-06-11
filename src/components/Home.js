@@ -1,8 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import useLogout from "../hooks/useLogout";
+import { Link } from 'react-router-dom'
+import useLogout from '../hooks/useLogout'
 const Home = () => {
-  const {logout} = useLogout()
+  const { logout } = useLogout()
   return (
     <section>
       <h1>Home</h1>
@@ -20,7 +19,7 @@ const Home = () => {
         <button onClick={async () => await logout()}>Sign Out</button>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
