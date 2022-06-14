@@ -36,7 +36,7 @@ For handling **the authorization for each route** I'm using *middlewares* that c
 
 <div align="center">
 
-![Alt](https://repobeats.axiom.co/api/embed/735a005b42d21617976536b268b913d42e365f63.svg "Repobeats analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/68c9df6f2f0b7c10166683e056861dee0e4dacbe.svg "Repobeats analytics image")
 
 </div>
 
